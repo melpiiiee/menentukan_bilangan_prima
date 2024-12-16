@@ -1,0 +1,1 @@
+# menentukan_bilangan_prima
