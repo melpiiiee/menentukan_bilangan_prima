@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mesin Turing Penentu Bilangan Prima</title>
+    
+    <style>
+        body {
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            background-color: #5D624C;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+            background-color: #C5BEAB;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            color: #000;
+        }
+
+        input[type="number"] {
+            padding: 10px;
+            margin-right: 10px;
+            border: 1px solid #88AADD;
+            border-radius: 4px;
+            width: 200px;
+        }
+
+        button {
+            padding: 10px 15px;
+            background-color: #9CA089;
+            color: #000;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #9D8A7C;
+        }
+
+        p {
+            font-size: 18px;
+            color: #523F31;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Mesin Turing Penentu Bilangan Prima</h1>
+        <input type="number" id="numberInput" placeholder="Masukkan bilangan" />
+        <button id="checkButton">Cek Bilangan Prima</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        document.getElementById('checkButton').addEventListener('click', function() {
+            const number = parseInt(document.getElementById('numberInput').value);
+            const resultElement = document.getElementById('result');
+
+            if (isNaN(number) || number <= 1) {
+                resultElement.textContent = 'Masukkan bilangan bulat lebih besar dari 1.';
+                return;
+            }
+
+            const isPrime = checkPrime(number);
+            resultElement.textContent = isPrime ? `${number} adalah bilangan prima.` : `${number} bukan bilangan prima.`;
+        });
+
+        function checkPrime(num) {
+            for (let i = 2; i <= Math.sqrt(num); i++) {
+                if (num % i === 0) {
+                    return false;
+                }
+            }
+            return true;
+        }
+    </script>
+</body>
+</html>
